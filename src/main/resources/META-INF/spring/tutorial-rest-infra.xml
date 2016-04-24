@@ -16,6 +16,6 @@
     </bean>
 
     <!-- scan for Mappers -->
-    <mybatis:scan base-package="tutorial.rest.domain.repository" />
+    <mybatis:scan base-package="tutorial.domain.repository" />
 
 </beans>
