@@ -2,7 +2,6 @@ package tutorial.domain.service.todo;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -56,11 +55,12 @@ public class TodoServiceImpl implements TodoService {
             throw new BusinessException(messages);
         }
 
-        String todoId = UUID.randomUUID().toString();
+        Integer todoId = todoRepository.createTodoId();
         Date createdAt = new Date();
 
-        todo.setTodoId(todoId);
+        todo.setTodoId(todoId.toString());
         todo.setCreatedAt(createdAt);
+        todo.setUpdatedAt(createdAt);
         todo.setFinished(false);
 
         todoRepository.create(todo);

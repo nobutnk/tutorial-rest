@@ -64,7 +64,7 @@
         (
             #{todoId},
             #{todoTitle},
-            #{todoCategory}
+            #{todoCategory},
             #{todoDetail},
             #{finished},
             #{updatedAt},
@@ -109,6 +109,13 @@
             todo
         WHERE
             finished = #{finished}
+    ]]>
+    </select>
+    
+    <select id="createTodoId" resultType="Integer">
+    <![CDATA[
+        SELECT
+            todo_seq.nextval
     ]]>
     </select>
 

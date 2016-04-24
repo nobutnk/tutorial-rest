@@ -17,4 +17,6 @@ public interface TodoRepository {
     int delete(Todo todo);
 
     long countByFinished(boolean finished);
+    
+    int createTodoId();
 }

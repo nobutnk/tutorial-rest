@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    ">
+
+    <bean id="CL_ORDERSTATUS" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
+     <property name="map">
+         <util:map>
+             <entry key="1" value="Received" />
+             <entry key="2" value="Sent" />
+             <entry key="3" value="Cancelled" />
+         </util:map>
+     </property>
+    </bean>
+
+    <bean id="jdbcTemplateForCodeList" class="org.springframework.jdbc.core.JdbcTemplate" >
+    <property name="dataSource" ref="dataSource" />
+    <property name="fetchSize" value="${codelist.jdbc.fetchSize:1000}" />
+</bean>
+
+<bean id="AbstractJdbcCodeList"
+    class="org.terasoluna.gfw.common.codelist.JdbcCodeList" abstract="true">
+    <property name="jdbcTemplate" ref="jdbcTemplateForCodeList" />
+</bean>
+
+<bean id="CL_TODO_CATEGORIES" parent="AbstractJdbcCodeList" >
+    <property name="querySql"
+        value="SELECT todo_category_id, todo_category_name FROM todo_category ORDER BY todo_category_id" /> <!-- (6) -->
+    <property name="valueColumn" value="todo_category_id" />
+    <property name="labelColumn" value="todo_category_name" />
+</bean>
+
+<bean id="CL_ITEM_CATEGORIES" parent="AbstractJdbcCodeList" >
+    <property name="querySql"
+        value="SELECT item_category_id, item_category_name FROM item_category ORDER BY item_category_id" /> <!-- (6) -->
+    <property name="valueColumn" value="item_category_id" />
+    <property name="labelColumn" value="item_category_name" />
+</bean>
+
+</beans>
