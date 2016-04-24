@@ -8,6 +8,10 @@
     ">
 
     <sec:http pattern="/resources/**" security="none"/>
+    
+    <!-- for REST API -->
+    <sec:http pattern="/api/v1/**" security="none"/>
+    
     <sec:http>
         <sec:form-login/>
         <sec:logout/>

@@ -22,11 +22,25 @@
             <bean
                 class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver" />
         </mvc:argument-resolvers>
+        <!-- for REST API -->
+        <mvc:message-converters register-defaults="false">
+            <bean
+                class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="dateFormat">
+                            <bean class="com.fasterxml.jackson.databind.util.StdDateFormat"/>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+        <!-- /for REST API -->
     </mvc:annotation-driven>
 
     <mvc:default-servlet-handler />
 
-    <context:component-scan base-package="tutorial.app" />
+    <context:component-scan base-package="tutorial.api" />
 
     <mvc:resources mapping="/resources/**"
         location="/resources/,classpath:META-INF/resources/"
