@@ -1,9 +1,9 @@
-package tutorial.rest.domain.service.todo;
+package tutorial.domain.service.todo;
 
 import java.util.Collection;
 import java.util.Date;
 
-import tutorial.rest.domain.model.Todo;
+import tutorial.domain.model.Todo;
 
 public interface TodoService {
 

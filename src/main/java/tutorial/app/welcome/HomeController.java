@@ -1,4 +1,4 @@
-package tutorial.rest.app.welcome;
+package tutorial.app.welcome;
 
 import java.text.DateFormat;
 import java.util.Date;

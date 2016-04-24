@@ -1,4 +1,4 @@
-package tutorial.rest.domain.model;
+package tutorial.domain.model;
 
 import java.io.Serializable;
 import java.util.Date;

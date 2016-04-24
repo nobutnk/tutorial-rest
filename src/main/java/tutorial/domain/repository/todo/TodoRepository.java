@@ -1,8 +1,8 @@
-package tutorial.rest.domain.repository.todo;
+package tutorial.domain.repository.todo;
 
 import java.util.Collection;
 
-import tutorial.rest.domain.model.Todo;
+import tutorial.domain.model.Todo;
 
 public interface TodoRepository {
 
