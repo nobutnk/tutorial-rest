@@ -27,11 +27,13 @@
             <bean
                 class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                 <property name="objectMapper">
-                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                    <bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
                         <property name="dateFormat">
                             <bean class="com.fasterxml.jackson.databind.util.StdDateFormat"/>
                         </property>
-                        <property name="moduleToInstall" value="com.fasterxml.jackson.datatype.jsr310.JSR310Module" />
+                        <property name="modules">
+                            <array><bean class="com.fasterxml.jackson.datatype.jsr310.JSR310Module" /></array>
+                        </property>
                     </bean>
                 </property>
             </bean>
