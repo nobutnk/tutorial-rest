@@ -10,6 +10,7 @@ import javax.validation.groups.Default;
 import org.dozer.Mapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,6 +39,14 @@ public class TodoRestController {
             todoResources.add(beanMapper.map(todo, TodoResource.class));
         }
         return todoResources;
+    }
+    
+    @RequestMapping(value="{todoId}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public TodoResource getTodo(@PathVariable("todoId") String todoId) {
+        Todo todo = todoService.findOne(todoId);
+        TodoResource todoResource = beanMapper.map(todo, TodoResource.class);
+        return todoResource;
     }
     
     @RequestMapping(value = "create", method = RequestMethod.POST)

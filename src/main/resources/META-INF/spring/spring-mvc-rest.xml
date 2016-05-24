@@ -31,6 +31,7 @@
                         <property name="dateFormat">
                             <bean class="com.fasterxml.jackson.databind.util.StdDateFormat"/>
                         </property>
+                        <property name="moduleToInstall" value="com.fasterxml.jackson.datatype.jsr310.JSR310Module" />
                     </bean>
                 </property>
             </bean>

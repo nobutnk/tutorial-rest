@@ -18,7 +18,7 @@
 <c:set var="titleKey"> <!-- (2) -->
     <tiles:insertAttribute name="title" ignore="true" />
 </c:set>
-<title><spring:message code="${titleKey}" text="Create Staff Information" /></title><!-- (3) -->
+<title><spring:message code="${titleKey}" text="Tutorial Application" /></title><!-- (3) -->
 </head>
 <body>
     <div class="container-fluid" id="wrapper">
