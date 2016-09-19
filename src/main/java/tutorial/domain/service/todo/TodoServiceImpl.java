@@ -1,7 +1,7 @@
 package tutorial.domain.service.todo;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -56,7 +56,7 @@ public class TodoServiceImpl implements TodoService {
         }
 
         Integer todoId = todoRepository.createTodoId();
-        Date createdAt = new Date();
+        LocalDateTime createdAt = LocalDateTime.now();
 
         todo.setTodoId(todoId.toString());
         todo.setCreatedAt(createdAt);
@@ -69,7 +69,7 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public Todo finish(String todoId, Date updatedAt) {
+    public Todo finish(String todoId, LocalDateTime updatedAt) {
         Todo todo = findOne(todoId);
         if (todo.isFinished()) {
             ResultMessages messages = ResultMessages.error();
@@ -93,7 +93,7 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public void delete(String todoId, Date updatedAt) {
+    public void delete(String todoId, LocalDateTime updatedAt) {
         Todo todo = findOne(todoId);
         todo.setUpdatedAt(updatedAt);
         int resultNum = todoRepository.delete(todo);

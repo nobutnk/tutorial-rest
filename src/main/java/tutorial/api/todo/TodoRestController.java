@@ -32,13 +32,13 @@ public class TodoRestController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public List<TodoResource> getTodos() {
+    public Collection<Todo> getTodos() {
         Collection<Todo> todos = todoService.findAll();
         List<TodoResource> todoResources = new ArrayList<>();
         for (Todo todo : todos) {
             todoResources.add(beanMapper.map(todo, TodoResource.class));
         }
-        return todoResources;
+        return todos;
     }
     
     @RequestMapping(value="{todoId}", method = RequestMethod.GET)

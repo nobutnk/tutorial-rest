@@ -26,9 +26,7 @@
     </typeAliases>
 
     <typeHandlers>
-<!--
         <package name="tutorial.infra.mybatis.typehandler" />
--->
     </typeHandlers>
 
 </configuration>

@@ -1,7 +1,9 @@
 package tutorial.domain.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,8 +23,9 @@ public class Todo implements Serializable {
 
     private boolean finished;
     
-    private Date updatedAt;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updatedAt;
 
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
 }
